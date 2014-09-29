@@ -20,6 +20,7 @@ Patch2:     cdrkit-1.1.9-no_mp3.patch
 Patch3:     cdrkit-1.1.9-buffer_overflow.patch
 Patch4:     cdrkit-1.1.10-build-fix.patch
 Patch5:     cdrkit-1.1.10-msg-format.patch
+Patch6:     cdrkit-1.1.11-memset.patch
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  cmake
 BuildRequires:  libcap-devel
@@ -100,6 +101,8 @@ number efficiency.
 %patch4 -p1
 # cdrkit-1.1.10-msg-format.patch
 %patch5 -p1
+# cdrkit-1.1.11-memset.patch
+%patch6 -p1
 # >> setup
 find . -type f -print0 | xargs -0 perl -pi -e 's#/usr/local/bin/perl#/usr/bin/perl#g'
 find doc -type f -print0 | xargs -0 chmod a-x

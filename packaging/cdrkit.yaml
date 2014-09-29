@@ -14,6 +14,7 @@ Patches:
     - cdrkit-1.1.9-buffer_overflow.patch
     - cdrkit-1.1.10-build-fix.patch
     - cdrkit-1.1.10-msg-format.patch
+    - cdrkit-1.1.11-memset.patch
 Description: cdrkit is a collection of CD/DVD utilities.
 
 PkgConfigBR:
