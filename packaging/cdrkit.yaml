@@ -1,0 +1,80 @@
+Name: cdrkit
+Summary: A collection of CD/DVD utilities
+Version: 1.1.11
+Release: 11
+Group: Applications/System
+License: GPLv2
+URL: http://cdrkit.org/
+Sources:
+    - cdrkit-%{version}.tar.gz
+Patches:
+    - cdrkit-1.1.8-werror.patch
+    - cdrkit-1.1.9-efi-boot.patch
+    - cdrkit-1.1.9-no_mp3.patch
+    - cdrkit-1.1.9-buffer_overflow.patch
+    - cdrkit-1.1.10-build-fix.patch
+    - cdrkit-1.1.10-msg-format.patch
+Description: cdrkit is a collection of CD/DVD utilities.
+
+PkgConfigBR:
+    - zlib
+PkgBR:
+    - cmake
+    - libcap-devel
+    - perl
+    - file-devel
+    - bzip2-devel
+ConfigOptions:
+    - -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}
+    - -DBUILD_SHARED_LIBS:BOOL=ON
+Builder: cmake
+NoFiles: yes
+SubPackages:
+    - Name: genisoimage
+      AsWholeName: yes
+      Summary: Creates an image of an ISO9660 filesystem
+      Group: Applications/System
+      Description: |
+          The genisoimage program is used as a pre-mastering program; i.e., it
+          generates the ISO9660 filesystem. Genisoimage takes a snapshot of
+          a given directory tree and generates a binary image of the tree
+          which will correspond to an ISO9660 filesystem when written to
+          a block device. Genisoimage is used for writing CD-ROMs, and includes
+          support for creating bootable El Torito CD-ROMs.
+          
+          Install the genisoimage package if you need a program for writing
+          CD-ROMs.
+    - Name: wodim
+      AsWholeName: yes
+      Summary: A command line CD/DVD recording program
+      Group: Applications/Archiving
+      Description: |
+          Wodim is an application for creating audio and data CDs. Wodim
+          works with many different brands of CD recorders, fully supports
+          multi-sessions and provides human-readable error messages.
+    - Name: icedax
+      AsWholeName: yes
+      Summary: A utility for sampling/copying .wav files from digital audio CDs
+      Group: Applications/Multimedia
+      Description: |
+          Icedax is a sampling utility for CD-ROM drives that are capable of
+          providing a CD's audio data in digital form to your host. Audio data
+          read from the CD can be saved as .wav or .sun format sound files.
+          Recording formats include stereo/mono, 8/12/16 bits and different
+          rates. Icedax can also be used as a CD player.
+      Requires:
+          - vorbis-tools
+
+    - Name: dirsplit
+      AsWholeName: yes
+      Summary: Splits directory into multiple volumes with equal size
+      Group: Applications/System
+      Description: |
+          The displit utility is designed to for a simple purpose: convert a 
+          directory with many multiple files (which are all smaller than a
+          certain medium, eg.  DVD) and "splits" it into "volumes", looking 
+          for the optimal order to get  the  best  space/medium-
+          number efficiency.
+      Requires:
+          - genisoimage = %{version}-%{release}
+
