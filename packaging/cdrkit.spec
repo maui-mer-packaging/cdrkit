@@ -113,7 +113,7 @@ find doc -type f -print0 | xargs -0 chmod a-x
 
 %build
 # >> build pre
-export CFLAGS="$RPM_OPT_FLAGS -Wall -Werror -Wno-unused-function -Wno-unused-variable -fno-strict-aliasing -Wno-unused-but-set-variable -Wno-array-bounds"
+export CFLAGS="$RPM_OPT_FLAGS -Wall -Werror -Wno-unused-function -Wno-unused-variable -fno-strict-aliasing -Wno-unused-but-set-variable -Wno-array-bounds -Wno-sizeof-pointer-memaccess"
 export CXXFLAGS="$CFLAGS"
 export FFLAGS="$CFLAGS"
 # << build pre
